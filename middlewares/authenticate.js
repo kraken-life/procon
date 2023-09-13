@@ -1,4 +1,4 @@
-const config = require("../../config.json");
+const config = require("../config.json");
 
 module.exports = (req, res, next) => {
     const authHeader = req.headers['authorization'];

@@ -1,10 +1,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const authenticate = require('./middlewares/authenticate');
+const authenticate = require('./middlewares/authenticate.js');
 const fs = require('fs');
 const path = require('path');
 
-const config = require('../config.json');
+const config = require('./config.json');
 
 const app = express();
 const port = config.port;
@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 app.use(authenticate);
 
 const actions = {};
-fs.readdirSync(path.join(__dirname, 'actions')).forEach((file) => {
+fs.readdirSync(path.join(GetResourcePath(GetCurrentResourceName()), 'actions')).forEach((file) => {
     if (file.endsWith('.js')) {
         const actionName = file.replace('.js', '');
         actions[actionName] = require(`./actions/${file}`);
