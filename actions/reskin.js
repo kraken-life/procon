@@ -1,7 +1,7 @@
 module.exports = (data) => {
     const {source} = data;
 
-    TriggerEvent('ataCharCreator:RequestMenuCharSpecific', source);
+    TriggerClientEvent('ataCharCreator:MenuChar', source);
 
     return true;
 }
