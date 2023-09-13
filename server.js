@@ -20,8 +20,9 @@ fs.readdirSync(path.join(GetResourcePath(GetCurrentResourceName()), 'actions')).
     }
 });
 
-app.post('/run', (req, res) => {
-    const { action, data } = req.body;
+app.post('/run/:action', (req, res) => {
+    const action = req.params.action;
+    const data = req.body;
 
     if (action && actions[action]) {
         const result = actions[action](data);
