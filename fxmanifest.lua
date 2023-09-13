@@ -1,7 +1,5 @@
-resource_manifest_version '44febabe-d386-4d18-afbe-5e627f4af937'
-
 fx_version 'cerulean'
-games { 'gta5' }
+game 'gta5'
 
 author 'Tom Witkowski <dev.gummibeer@gmail.com>'
 description 'FiveM RCON for pros'
@@ -9,4 +7,5 @@ version '0.1.0'
 
 dependency 'yarn'
 
+server_only 'yes'
 server_script 'src/server.js'
