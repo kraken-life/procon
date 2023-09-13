@@ -1,5 +1,11 @@
 {
+  "private": true,
+  "version": "0.1.0",
   "type": "commonjs",
+  "author": {
+    "name": "Tom Witkowski",
+    "email": "dev.gummibeer@gmail.com"
+  },
   "dependencies": {
     "@citizenfx/server": "^2.0.6683-1",
     "body-parser": "^1.20.2",

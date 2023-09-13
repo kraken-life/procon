@@ -1,5 +1,6 @@
 MIT License
 
+Copyright (c) 2023 Tom Witkowski
 Copyright (c) 2023 Kraken-Life
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
