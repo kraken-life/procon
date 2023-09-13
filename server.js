@@ -25,11 +25,12 @@ app.post('/run/:action', (req, res) => {
     const data = req.body;
 
     if (action && actions[action]) {
-        const result = actions[action](data);
-
-        res.json({ result });
+        Promise.resolve(actions[action](data))
+            .then((result) => {
+                res.json({result});
+            });
     } else {
-        res.status(404).json({ error: 'Invalid action' });
+        res.status(404).json({error: 'Invalid action'});
     }
 });
 
