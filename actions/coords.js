@@ -1,17 +1,9 @@
-const {getPlayers} = require('@citizenfx/server');
-
 module.exports = (data) => {
     const {source} = data;
 
-    const players = getPlayers();
-    const player = players.find((player) => player.toString() === source.toString());
+    const ped = GetPlayerPed(source);
+    const [x, y, z] = GetEntityCoords(ped);
+    const h = GetEntityHeading(ped);
 
-    if (player) {
-        const [x, y, z] = GetEntityCoords(player);
-        const h = GetEntityHeading(player);
-
-        return {x, y, z, h};
-    } else {
-        throw new Error('Player not found');
-    }
+    return {x, y, z, h};
 }
