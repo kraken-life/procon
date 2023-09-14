@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const authenticate = require('./middlewares/authenticate.js');
 const config = require('./config.json');
 const actions = require('./utils/actions');
+const generateDotNotatedKeys = require('./utils/generateDotNotatedKeys');
 
 const app = express();
 const port = config.port;
@@ -29,5 +30,6 @@ app.post('/run/:action', (req, res) => {
 });
 
 app.listen(port, () => {
+    console.log(generateDotNotatedKeys(actions));
     console.log(`proCON is listening on port ${port}`);
 });

@@ -10,7 +10,7 @@ const actionFiles = glob.sync(pattern, { cwd: path.join(resourcePath, 'actions')
 actionFiles.forEach((file) => {
     const actionPath = path.join(resourcePath, 'actions', file);
     const actionName = path.basename(file, '.js');
-    const actionParts = file.split(path.sep);
+    const actionParts = file.split('/');
 
     let currentObj = actions;
     for (let i = 0; i < actionParts.length - 1; i++) {
