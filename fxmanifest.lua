@@ -8,4 +8,5 @@ version '0.1.0'
 dependency 'yarn'
 
 server_only 'yes'
+server_script 'server.lua'
 server_script 'server.js'

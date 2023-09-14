@@ -1,0 +1,10 @@
+RegisterServerEvent('procon:server:esx')
+AddEventHandler('procon:server:esx', function(cb)
+	cb(ESX)
+end)
+
+RegisterServerEvent('procon:server:xPlayer')
+AddEventHandler('procon:server:xPlayer', function(src, cb)
+	local xPlayer = ESX.GetPlayerFromId(src)
+	cb(xPlayer)
+end)

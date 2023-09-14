@@ -1,10 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const authenticate = require('./middlewares/authenticate.js');
-const fs = require('fs');
-const path = require('path');
-
 const config = require('./config.json');
+const actions = require('./utils/actions');
 
 const app = express();
 const port = config.port;
@@ -12,26 +10,22 @@ const port = config.port;
 app.use(bodyParser.json());
 app.use(authenticate);
 
-const actions = {};
-fs.readdirSync(path.join(GetResourcePath(GetCurrentResourceName()), 'actions')).forEach((file) => {
-    if (file.endsWith('.js')) {
-        const actionName = file.replace('.js', '');
-        actions[actionName] = require(`./actions/${file}`);
-    }
-});
-
 app.post('/run/:action', (req, res) => {
-    const action = req.params.action;
-    const data = req.body;
+    const actionName = req.params.action;
 
-    if (action && actions[action]) {
-        Promise.resolve(actions[action](data))
-            .then((result) => {
-                res.json({result});
-            });
-    } else {
-        res.status(404).json({error: 'Invalid action'});
+    if (actionName) {
+        const action = actionName.split('.').reduce((obj, key) => obj[key], actions);
+
+        if (action) {
+            Promise.resolve(action(req.body))
+                .then((result) => {
+                    res.json({result});
+                });
+            return;
+        }
     }
+
+    res.status(404).json({error: 'Invalid action'});
 });
 
 app.listen(port, () => {
