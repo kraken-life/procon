@@ -23,7 +23,8 @@ app.post('/run/:action', (req, res) => {
             })
                 .then((result) => {
                     res.json({result});
-                });
+                })
+                .catch((error) => res.json({error}));
             return;
         }
     }
