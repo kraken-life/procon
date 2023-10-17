@@ -11,6 +11,4 @@ server_only 'yes'
 server_script 'server.lua'
 server_script 'server.js'
 
-shared_scripts {
-    '@es_extended/imports.lua',
-}
+shared_script '@es_extended/imports.lua'
