@@ -24,7 +24,7 @@ app.post('/run/:action', (req, res) => {
                 .then((result) => {
                     res.json({result});
                 })
-                .catch((error) => res.json({error}));
+                .catch((error) => res.status(500).json({error: error?.toString() || 'Internal Server Error'}));
             return;
         }
     }
