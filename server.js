@@ -18,7 +18,7 @@ app.post('/run/:action', (req, res) => {
         const action = actionName.split('.').reduce((obj, key) => obj[key], actions);
 
         if (action) {
-            Promise.resolve(action(req.body))
+            Promise.resolve(() => action(req.body))
                 .then((result) => {
                     res.json({result});
                 });
