@@ -23,7 +23,7 @@ app.post('/run/:action', (req, res) => {
             })
                 .then((result) => {
                     result = result ?? true;
-                    console.log(actionName, result);
+                    console.log(actionName+'('+JSON.stringify(req.body)+')'+': '+JSON.stringify(result ?? null));
                     res.json({result});
                 })
                 .catch((error) => res.status(500).json({error: error?.toString() || 'Internal Server Error'}));
