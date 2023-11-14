@@ -19,7 +19,6 @@ app.post('/run/:action', (req, res) => {
 
         if (action) {
             new Promise((resolve, reject) => {
-                console.log(process.memoryUsage());
                 resolve(action(req.body))
             })
                 .then((result) => {
